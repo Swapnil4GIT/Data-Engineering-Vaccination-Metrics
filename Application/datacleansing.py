@@ -46,21 +46,25 @@ class datacleansing:
         error_df.to_csv(error_file, index=None)
 
     def datacleansing_IND(self, logger, fname, f):
-        logger.info("[INFO]: Started cleaning the dataset for IND.csv.")
+        logger.info("[INFO]: Started data cleansing for IND.csv.")
         df = pd.read_csv(fname)
         df['Country'] = 'IND'
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
         df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
+        logger.info("[INFO]: Ended successfully data cleansing for IND.csv.")
 
     def datacleansing_USA(self, logger, fname, f):
+        logger.info("[INFO]: Started data cleansing for USA.csv.")
         df = pd.read_csv(fname)
         df['Country'] = 'USA'
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
         df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
+        logger.info("[INFO]: Ended successfully data cleansing for USA.csv.")
 
     def datacleansing_AUS(self, logger, fname, f):
+        logger.info("[INFO]: Started data cleansing for AUS.csv.")
         df = pd.read_excel(fname)
         df['Country'] = 'AUS'
         df = df.rename(columns={
@@ -73,6 +77,7 @@ class datacleansing:
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
         df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
+        logger.info("[INFO]: Ended successfully data cleansing for AUS.csv.")
 
     def job_Datacleansing(self, logger):
         housekeep = housekeeping()
