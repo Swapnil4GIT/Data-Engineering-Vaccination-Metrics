@@ -5,12 +5,11 @@ sys.path.insert(0, '/Volumes/E-Study/Github/Data-Engineering-Vaccination-Metrics
 from housekeeping import *
 
 class datacleansing:
-
+    
     def datacleansing_IND(self, logger, fname):
         df = pd.read_csv(fname)
         print(fname)
         print(df.head())
-
 
     def datacleansing_USA(self, logger, fname):
         df = pd.read_csv(fname)
