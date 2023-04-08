@@ -9,18 +9,28 @@ class datacleansing:
     def datacleansing_IND(self, logger, fname):
         df = pd.read_csv(fname)
         df['Country'] = 'IND'
+        df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
         df.to_csv('../Staging/IND.csv', index=None)
 
     def datacleansing_USA(self, logger, fname):
         df = pd.read_csv(fname)
-        #print(fname)
-        #print(df.head())
+        df['Country'] = 'USA'
+        df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
+        df.to_csv('../Staging/USA.csv', index=None)
 
     def datacleansing_AUS(self, logger, fname):
         df = pd.read_excel(fname)
-        #print(fname)
-        #print(df.head())
-
+        df['Country'] = 'AUS'
+        df = df.rename(columns={
+            'Unique ID' : 'ID',
+            'Patient Name' : 'Name',
+            'Vaccine Type' : 'VaccinationType',
+            'Date of Birth' : 'DOB',
+            'Date of Vaccination' : 'VaccinationDate'
+        })
+        df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
+        df.to_csv('../Staging/AUS.csv', index=None)
+        
     def job_Datacleansing(self, logger):
         housekeep = housekeeping()
         logger.info("[INFO]: ----------------------------------------------------------")

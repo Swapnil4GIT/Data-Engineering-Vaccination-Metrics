@@ -1,4 +1,4 @@
-ID,Name,DOB,VaccinationType,VaccinationDate,Free or Paid,Country
-1,Vikas,1998-12-01,XYZ,2022-01-01,F,IND
-2,Rahul,1982-08-13,ABC,2022-03-05,P,IND
-3,Sameer,1952-08-13,ABC,2022-02-20,F,IND
+ID,Country,Name,VaccinationType,VaccinationDate
+1,IND,Vikas,XYZ,2022-01-01
+2,IND,Rahul,ABC,2022-03-05
+3,IND,Sameer,ABC,2022-02-20
