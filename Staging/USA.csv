@@ -1,4 +1,4 @@
 ID,Country,Name,VaccinationType,VaccinationDate
-1,USA,Sam,EFG,6152022
-2,USA,John,XYZ,1052022
-3,USA,Mike,ABC,12282021
+1,USA,Sam,EFG,1970-01-01
+2,USA,John,XYZ,1970-01-01
+3,USA,Mike,ABC,1970-01-01
