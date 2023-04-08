@@ -6,7 +6,7 @@ from datetime import datetime
 import sys
 
 class housekeeping:
-    
+
     def getSource_File_Path(self, logger):
         logger.info("[INFO]: Reading configuration file.")
         conffilepath = '/Volumes/E-Study/Github/Data-Engineering-Vaccination-Metrics/Config/configfile.ini'
@@ -68,6 +68,15 @@ class housekeeping:
                             force=True)
         return logger
 
+    def test_log(self):
+        logger=logging.getLogger()
+        logpath = self.getLog_File_Path(logger)
+        logfile = logpath + str(datetime.now().strftime('%Y_%m_%d')) + '_test.log'
+        logging.basicConfig(filename=logfile,
+                            format='%(asctime)s %(message)s',
+                            filemode='w',
+                            force=True)
+        return logger
 
     def abort(self):
         sys.exit()
