@@ -7,5 +7,6 @@ Instructions to run:
 3. Make appropriate changes to Config/configfile.ini. You need to change the directory paths of your choice
 4. Application/housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
 5. Application/datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
-6. TestUnit/test_housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
-7. TestUnit/test_datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
+6. Application/datamerging.py ==> Change directory path in sys.path.insert() as per your need.
+7. TestUnit/test_housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
+8. TestUnit/test_datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
