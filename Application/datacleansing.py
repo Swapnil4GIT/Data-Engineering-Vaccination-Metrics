@@ -6,38 +6,58 @@ from housekeeping import *
 
 class datacleansing:
     
-    def convert_Object_to_Date(self, obj):
+    def IND_convert_Object_to_Date(self, obj):
         try:
-            return pd.to_datetime(obj)
+            return datetime.strptime(str(obj), '%Y-%m-%d')
         except:
             return pd.to_datetime('1920-01-01')
 
+    def USA_convert_Object_to_Date(self, obj):
+        try:
+            return datetime.strptime(str(obj).strip(), '%m%d%Y')
+        except:
+            return pd.to_datetime('1920-01-01')
+    
+    def AUS_convert_Object_to_Date(self, obj):
+        try:
+            return datetime.strptime(str(obj).strip(), '%Y-%m-%d')
+        except:
+            try:
+                return datetime.strptime(str(obj).strip(), '%Y-%m-%d %H:%M:%S')
+            except:
+                return pd.to_datetime('1920-01-01')
+        
     def commoncleansing(self, df, f):
         error_df = df.loc[df.isna().any(axis=1)]
         df = df.loc[~df.isna().any(axis=1)]
-        df['VaccinationDate'] = df['VaccinationDate'].apply(lambda x: self.convert_Object_to_Date(x))
-        df['VaccinationDate'] = df['VaccinationDate'].dt.date
-        staging_file = '../Staging/' + f
-        error_file = '../Error/' + f
         
-        if f.endswith('.xlsx'):
-            df.to_excel(staging_file, index=None)
-            error_df.to_excel(error_file, index=None)
-        else:
-            df.to_csv(staging_file, index=None)
-            error_df.to_csv(error_file, index=None)
+        if f.startswith('IND'):
+            df['VaccinationDate'] = df['VaccinationDate'].apply(lambda x: self.IND_convert_Object_to_Date(x))
+        elif f.startswith('USA'):
+            df['VaccinationDate'] = df['VaccinationDate'].apply(lambda x: self.USA_convert_Object_to_Date(x))
+        elif f.startswith('AUS'):
+            df['VaccinationDate'] = df['VaccinationDate'].apply(lambda x: self.AUS_convert_Object_to_Date(x))
+
+        df['VaccinationDate'] = df['VaccinationDate'].dt.date
+        filename = os.path.splitext(f)[0]
+        staging_file = '../Staging/' + filename + '.csv'
+        error_file = '../Error/' + filename + '.csv'        
+        df.to_csv(staging_file, index=None)
+        error_df.to_csv(error_file, index=None)
 
     def datacleansing_IND(self, logger, fname, f):
         logger.info("[INFO]: Started cleaning the dataset for IND.csv.")
         df = pd.read_csv(fname)
         df['Country'] = 'IND'
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
+        df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
 
     def datacleansing_USA(self, logger, fname, f):
         df = pd.read_csv(fname)
         df['Country'] = 'USA'
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
+        df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
 
     def datacleansing_AUS(self, logger, fname, f):
@@ -51,6 +71,7 @@ class datacleansing:
             'Date of Vaccination' : 'VaccinationDate'
         })
         df = df[['ID', 'Country', 'Name', 'VaccinationType', 'VaccinationDate']]
+        df['VaccinationDate'] = df['VaccinationDate'].astype(str).apply(lambda x: x.strip())
         self.commoncleansing(df, f)
 
     def job_Datacleansing(self, logger):
