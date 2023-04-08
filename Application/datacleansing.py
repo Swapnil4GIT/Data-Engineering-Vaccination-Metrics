@@ -8,18 +8,18 @@ class datacleansing:
     
     def datacleansing_IND(self, logger, fname):
         df = pd.read_csv(fname)
-        print(fname)
-        print(df.head())
+        df['Country'] = 'IND'
+        df.to_csv('../Staging/IND.csv', index=None)
 
     def datacleansing_USA(self, logger, fname):
         df = pd.read_csv(fname)
-        print(fname)
-        print(df.head())
+        #print(fname)
+        #print(df.head())
 
     def datacleansing_AUS(self, logger, fname):
         df = pd.read_excel(fname)
-        print(fname)
-        print(df.head())
+        #print(fname)
+        #print(df.head())
 
     def job_Datacleansing(self, logger):
         housekeep = housekeeping()
@@ -40,6 +40,6 @@ class datacleansing:
             else:
                 logger.warning("[WARNING]: New country's data is received. Please check.")
                 return 2
-            
+        logger.info("[INFO]: Data cleansing job ended successfully.")    
         return 0
         
