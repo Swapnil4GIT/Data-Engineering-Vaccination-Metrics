@@ -1,6 +1,8 @@
-from housekeeping import *
 import pandas as pd
 import os
+import sys
+sys.path.insert(0, '/Volumes/E-Study/Github/Data-Engineering-Vaccination-Metrics/Application')
+from housekeeping import *
 
 class datacleansing:
 
@@ -39,4 +41,6 @@ class datacleansing:
             else:
                 logger.warning("[WARNING]: New country's data is received. Please check.")
                 return 2
+            
+        return 0
         

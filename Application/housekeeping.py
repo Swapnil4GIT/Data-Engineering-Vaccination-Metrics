@@ -4,6 +4,7 @@ import pathlib
 import logging
 from datetime import datetime
 import sys
+sys.path.insert(0, '/Volumes/E-Study/Github/Data-Engineering-Vaccination-Metrics/Application')
 
 class housekeeping:
 
@@ -94,10 +95,14 @@ class housekeeping:
         
         files = os.listdir(filepath)
         files = [f for f in files if not f.startswith('.')]
+
         if len(files) == 0:
             logger.error("[ERROR]: Input files are missing. Please contact the source system.")
             return 1
-
+        elif len(files) > 3:
+            logger.error("[WARNING]: More than expected files received. Please check.")
+            return 2
+        
         logger.info("[INFO]: Validating the file types received from source.")
         for f in files:
             if self.isValid_File_Type(f):
