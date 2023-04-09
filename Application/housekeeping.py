@@ -1,3 +1,10 @@
+#----------------------------------------------------------------------------------------------------------#
+# This is an housekeeping job. The job does the housekeeping work needed at the beginning.                 #
+# The job has the methods to create the log file, test_log file, get file path, log path etc.              #
+# The job checks if the files are available for the process and their expected file types.                 #
+# The job return_code = 0 for success, 1 for error and 2 for warning.                                      #
+#----------------------------------------------------------------------------------------------------------#
+
 import os
 import configparser
 import pathlib

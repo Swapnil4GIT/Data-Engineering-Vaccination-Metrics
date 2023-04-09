@@ -1,3 +1,8 @@
+#----------------------------------------------------------------------------------------------------------#
+# This python program is to create the default configuration file at the beginning of every job run.       #
+# If you need to make any configuration changes related to constant variables, please make it here.        #
+#----------------------------------------------------------------------------------------------------------#
+
 import configparser
 
 class generate_config:
@@ -25,3 +30,4 @@ class generate_config:
         with open(r'/Volumes/E-Study/Github/Data-Engineering-Vaccination-Metrics/Config/configfile.ini',
                 'w') as configfile:
             config.write(configfile)
+

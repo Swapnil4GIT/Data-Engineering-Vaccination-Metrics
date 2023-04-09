@@ -1,3 +1,12 @@
+#----------------------------------------------------------------------------------------------------------#
+# This is data cleansing job. The cleans data for all the 3 countries datasets - IND, USA and AUS.         #
+# The job eliminates any null values and writes those to the error report.                                 #
+# The job formats date related columns and brings the datasets in same format and shape                    #
+# The job return_code = 0 for success                                                                      #
+# The job return_code = 1 for failure                                                                      #
+# The job return_code = 2 for warning                                                                      #
+#----------------------------------------------------------------------------------------------------------#
+
 import pandas as pd
 import os
 import sys

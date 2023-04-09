@@ -1,3 +1,11 @@
+#----------------------------------------------------------------------------------------------------------#
+# This the job to create the required metrics for the project.                                             #
+# The job creates 3 metrics - Metric1, Metric2 and Metric3                                                 #
+# The metrics are created using aggregation at country level and country + vaccine type level              #
+# Populations of 3 countries are hardcoded based on as of today's numbers.                                 #
+# The job return_code = 0 for success and return_code = 1 for failure.                                     #
+#----------------------------------------------------------------------------------------------------------#
+
 import pandas as pd 
 import os
 import sys 

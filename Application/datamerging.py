@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------------------------------------#
+# This is the data merging job. The job concatenates 3 datasets vertically and re-arranges the index.      #
+# The job return_code = 0 for success.                                                                     #
+# The job return_code = 1 for failure.                                                                     #
+#----------------------------------------------------------------------------------------------------------#
+
 import pandas as pd
 import os
 import sys

@@ -1,3 +1,10 @@
+#----------------------------------------------------------------------------------------------------------#
+# This is an archival and purge job. The job archives the input dataset files after successful process.    #
+# The job also purges the old logs based on max log keep parameters threshold. Purge not yet coded.        #
+# The job takes files from Data directory, adds date to the filename and copies to Archive directory.      #
+# The job return_code = 0 for success and return_code = 1 for failure.                                     #
+# The job is called from main.py                                                                           #
+#----------------------------------------------------------------------------------------------------------#
 import pandas as pd 
 import os
 import sys 

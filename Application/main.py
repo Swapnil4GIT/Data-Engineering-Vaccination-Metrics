@@ -1,3 +1,12 @@
+#----------------------------------------------------------------------------------------------------------#
+# This is the main driver job. The main job calls the individual jobs in below order -                     #
+# 1. job_Housekeeping                                                                                      #
+# 2. job_Datacleansing                                                                                     #
+# 3. job_Datamerging                                                                                       #
+# 4. job_Datatransaggregate                                                                                #
+# 5. job_archive_and_purge                                                                                 # 
+#----------------------------------------------------------------------------------------------------------#
+
 from housekeeping import *
 from datacleansing import *
 from create_config import *
