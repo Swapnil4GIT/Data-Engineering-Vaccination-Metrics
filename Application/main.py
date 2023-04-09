@@ -2,12 +2,14 @@ from housekeeping import *
 from datacleansing import *
 from create_config import *
 from datamerging import *
+from datatransaggregate import *
 
 config = generate_config()
 
 housekeep = housekeeping()
 dataclean = datacleansing()
 datamerge = datamerging()
+dataaggre = datatransaggregate()
 
 logger = housekeep.init_log()
 logger.setLevel(logging.DEBUG)
@@ -30,4 +32,9 @@ else:
             housekeep.abort()
         else:
             logger.info("[INFO]: Datamerging job ended successfully.")
-            
+            jb_daggre_rc = dataaggre.job_Datatransaggregate(logger)
+            if (jb_daggre_rc):
+                logger.error("[ERROR]: Aborting the data transformation and aggregate job.")
+                housekeep.abort()
+            else:
+                logger.info("[INFO]: Data transformation and aggregate job ended successfully.")

@@ -9,12 +9,15 @@ class datamerging:
     def job_Datamerging(self, logger):
         logger.info("[INFO]: ----------------------------------------------------------")
         logger.info("[INFO]: Data merging job started.")
-        df_ind = pd.read_csv('../Staging/IND.csv')
-        df_usa = pd.read_csv('../Staging/USA.csv')
-        df_aus = pd.read_csv('../Staging/AUS.csv')
+        try:
+            df_ind = pd.read_csv('../Staging/IND.csv')
+            df_usa = pd.read_csv('../Staging/USA.csv')
+            df_aus = pd.read_csv('../Staging/AUS.csv')
 
-        df_all = pd.concat([df_ind, df_usa, df_aus], ignore_index=True, sort=False)
-        df_all.to_csv('../Staging/ALL.csv')
-
-        logger.info("[INFO]: Data merging job ended successfully.")
+            df_all = pd.concat([df_ind, df_usa, df_aus], ignore_index=True, sort=False)
+            df_all.to_csv('../Staging/ALL.csv')
+            return 0
+        except:
+            return 1
+        
         return 0

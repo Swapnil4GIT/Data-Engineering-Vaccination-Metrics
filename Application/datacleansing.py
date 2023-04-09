@@ -98,6 +98,6 @@ class datacleansing:
             else:
                 logger.warning("[WARNING]: New country's data is received. Please check.")
                 return 2
-        logger.info("[INFO]: Data cleansing job ended successfully.")    
+
         return 0
         
