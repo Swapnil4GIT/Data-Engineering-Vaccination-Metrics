@@ -14,3 +14,6 @@ Instructions to run:
 10. Application/dataarchiveandpurge.py ==> Change the src and tar path variables as per your need.
 10. TestUnit/test_housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
 11. TestUnit/test_datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
+12. TestUnit/test_dataarchiveandpurge.py ==> Change the directory path in the sys.path.insert() as per your need.
+13. TestUnit/test_datamerging.py ==> Change the directory path in the sys.path.insert() as per your need.
+14. TestUnit/test_datatransaggregate.py ==> Change the directory path in the sys.path.insert() as per your need.
