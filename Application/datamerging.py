@@ -21,9 +21,22 @@ class datamerging:
             df_aus = pd.read_csv('../Staging/AUS.csv')
 
             df_all = pd.concat([df_ind, df_usa, df_aus], ignore_index=True, sort=False)
-            df_all.to_csv('../Staging/ALL.csv')
+            df_all.to_csv('../Staging/ALL.csv', index=None)
             return 0
         except:
             return 1
-        
-        return 0
+    
+    def job_delta_Datamerging(self, logger):
+        logger.info("[INFO]: ----------------------------------------------------------")
+        logger.info("[INFO]: Data merging job started.")
+        try:
+            df_ind = pd.read_csv('../Staging/IND.csv')
+            df_usa = pd.read_csv('../Staging/USA.csv')
+            df_aus = pd.read_csv('../Staging/AUS.csv')
+            df_all = pd.read_csv('../Staging/ALL.csv')
+
+            df_updated = pd.concat([df_ind, df_usa, df_aus, df_all], ignore_index=True, sort=False)
+            df_updated.to_csv('../Staging/ALL.csv', index=None)
+            return 0
+        except:
+            return 1
