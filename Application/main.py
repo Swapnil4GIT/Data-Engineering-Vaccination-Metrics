@@ -3,6 +3,7 @@ from datacleansing import *
 from create_config import *
 from datamerging import *
 from datatransaggregate import *
+from dataarchiveandpurge import * 
 
 config = generate_config()
 
@@ -10,6 +11,7 @@ housekeep = housekeeping()
 dataclean = datacleansing()
 datamerge = datamerging()
 dataaggre = datatransaggregate()
+darchive = archive_and_purge()
 
 logger = housekeep.init_log()
 logger.setLevel(logging.DEBUG)
@@ -38,3 +40,9 @@ else:
                 housekeep.abort()
             else:
                 logger.info("[INFO]: Data transformation and aggregate job ended successfully.")
+                jb_arch_rc = darchive.job_archive_datasets(logger)
+                if (jb_arch_rc):
+                    logger.error("[ERROR]: Aborting the data archive and purge job.")
+                    housekeep.abort()
+                else:
+                    logger.info("[INFO]: Data archive and purge job completed successfully.")

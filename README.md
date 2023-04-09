@@ -8,7 +8,9 @@ Instructions to run:
 4. Application/housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
 5. Application/datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
 6. Application/datamerging.py ==> Change directory path in sys.path.insert() as per your need.
-7. Application/datatransaggregate ==> Change directory path in sys.path.insert() as per your need.
-8. Application/datatransaggregate ==> Change the country population constants if needed.
-9. TestUnit/test_housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
-10. TestUnit/test_datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
+7. Application/datatransaggregate.py ==> Change directory path in sys.path.insert() as per your need.
+8. Application/datatransaggregate.py ==> Change the country population constants if needed.
+9. Application/dataarchiveandpurge.py ==> Change the directory path in sys.path.insert() as per your need.
+10. Application/dataarchiveandpurge.py ==> Change the src and tar path variables as per your need.
+10. TestUnit/test_housekeeping.py ==> Change directory path in sys.path.insert() as per your need.
+11. TestUnit/test_datacleansing.py ==> Change directory path in sys.path.insert() as per your need.
